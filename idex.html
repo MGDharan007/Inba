@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>🎂 Birthday Surprise for Harsini 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --pink:#ff6eb4;--pink-deep:#e91e8c;--purple:#9b59b6;--purple-deep:#6c3483;
+  --gold:#f9c74f;--gold-deep:#e6a817;--rose:#ff85a1;--white:#fff;
+  --glass-bg:rgba(255,255,255,0.11);--glass-border:rgba(255,255,255,0.22);
+  --shadow:0 8px 32px rgba(31,38,135,0.28);--blur:blur(14px);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;overflow-x:hidden;background:#0d0012;}
+.page{min-height:100vh;position:relative;overflow:hidden;}
+.hidden{display:none!important;}
+.glass-card{background:var(--glass-bg);backdrop-filter:var(--blur);-webkit-backdrop-filter:var(--blur);border:1px solid var(--glass-border);border-radius:24px;box-shadow:var(--shadow);}
+.glow-btn{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;border:none;border-radius:50px;padding:14px 36px;font-size:1rem;font-weight:600;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 0 20px rgba(255,110,180,0.5);}
+.glow-btn:hover{transform:translateY(-3px);box-shadow:0 0 40px rgba(255,110,180,0.8);}
+.glow-btn::before{content:'';position:absolute;top:-50%;left:-60%;width:60%;height:200%;background:rgba(255,255,255,0.2);transform:skewX(-20deg);animation:shimmer 2.5s infinite;}
+@keyframes shimmer{0%{left:-60%}100%{left:160%}}
+canvas.particles{position:absolute;inset:0;pointer-events:none;z-index:0;}
+
+/* ========== LOGIN ========== */
+#page-login{background:linear-gradient(135deg,#1a0030,#3d0066,#6b0080,#3d0066,#1a0030);background-size:400% 400%;animation:gradShift 8s ease infinite;display:flex;align-items:center;justify-content:center;}
+@keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.balloon-wrap{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.balloon{position:absolute;bottom:-120px;width:50px;animation:floatUp linear infinite;}
+.balloon svg{width:100%;height:auto;}
+@keyframes floatUp{0%{transform:translateX(0) translateY(0);opacity:.9}50%{transform:translateX(30px) translateY(-50vh)}100%{transform:translateX(-10px) translateY(-110vh);opacity:0}}
+.login-wrap{position:relative;z-index:10;width:100%;max-width:440px;padding:20px;}
+.login-card{padding:48px 40px;text-align:center;}
+.login-card .brand-emoji{font-size:3rem;display:block;margin-bottom:10px;animation:bounce 1.5s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.login-card h1{font-family:'Dancing Script',cursive;font-size:2.4rem;background:linear-gradient(135deg,#f9c74f,#ff85a1,#c77dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.login-card p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:30px;}
+.input-group{position:relative;margin-bottom:18px;}
+.input-group input{width:100%;padding:14px 18px 14px 46px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:12px;color:#fff;font-size:.95rem;outline:none;transition:border .2s,box-shadow .2s;}
+.input-group input::placeholder{color:rgba(255,255,255,.4);}
+.input-group input:focus{border-color:var(--pink);box-shadow:0 0 20px rgba(255,110,180,.3);}
+.input-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;pointer-events:none;}
+.login-btn{width:100%;padding:15px;font-size:1rem;font-weight:700;letter-spacing:1px;margin-top:6px;}
+.error-msg{background:rgba(255,60,100,.2);border:1px solid rgba(255,60,100,.4);border-radius:10px;padding:10px 16px;color:#ff8aad;font-size:.88rem;margin-top:14px;display:none;animation:shake .4s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+#transition-overlay{position:fixed;inset:0;z-index:9999;background:radial-gradient(circle,#ff6eb4,#9b59b6,#1a0030);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .6s;}
+#transition-overlay.active{opacity:1;pointer-events:all;}
+.transition-sparkle{font-size:3rem;animation:spin 1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ========== DOB ========== */
+#page-dob{background:linear-gradient(135deg,#12002b,#2d0060,#5c0080,#2d0060,#12002b);background-size:300% 300%;animation:gradShift 10s ease infinite;display:flex;align-items:center;justify-content:center;flex-direction:column;}
+.dob-card{padding:52px 44px;text-align:center;max-width:480px;width:90%;position:relative;z-index:10;}
+.dob-card .icon-row{font-size:2.5rem;margin-bottom:16px;}
+.dob-card h2{font-family:'Dancing Script',cursive;font-size:2.2rem;background:linear-gradient(135deg,#f9c74f,#ff85a1);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px;}
+.dob-card p{color:rgba(255,255,255,.7);font-size:.92rem;margin-bottom:28px;}
+.dob-input{width:100%;padding:14px 18px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:1rem;outline:none;text-align:center;transition:border .2s,box-shadow .2s;margin-bottom:18px;font-family:'Poppins',sans-serif;}
+.dob-input:focus{border-color:var(--gold);box-shadow:0 0 20px rgba(249,199,79,.3);}
+.dob-btn{width:100%;padding:15px;font-size:1rem;font-weight:700;}
+.dob-error{background:rgba(255,60,100,.15);border:1px solid rgba(255,60,100,.4);border-radius:10px;padding:12px 16px;color:#ff8aad;font-size:.9rem;margin-top:14px;display:none;animation:shake .4s ease;}
+
+/* ========== BIRTHDAY OVERLAY ========== */
+#birthday-overlay{position:fixed;inset:0;z-index:5000;background:linear-gradient(135deg,#1a0030,#3d006b,#6b0090);display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+#birthday-overlay.show{display:flex;}
+.bday-title{font-family:'Dancing Script',cursive;font-size:clamp(2.5rem,7vw,5rem);background:linear-gradient(135deg,#f9c74f,#ffb3e0,#c77dff,#f9c74f);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:textShine 3s linear infinite,fadeInUp .8s ease forwards;text-align:center;padding:0 20px;opacity:0;}
+@keyframes textShine{0%{background-position:0%}100%{background-position:200%}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+.dev-line{color:rgba(255,255,255,.8);font-size:1rem;margin:20px 0 10px;animation:fadeInUp 1s ease .6s forwards;opacity:0;}
+.dev-names{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease 1s forwards;opacity:0;}
+.dev-name{font-family:'Dancing Script',cursive;font-size:1.6rem;color:var(--gold);text-shadow:0 0 15px rgba(249,199,79,.6);opacity:0;animation:popIn .5s cubic-bezier(.34,1.56,.64,1) forwards;}
+@keyframes popIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+.gift-rain{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.gift-item{position:absolute;top:-80px;font-size:2rem;animation:giftFall linear infinite;}
+@keyframes giftFall{0%{transform:translateY(-80px) rotate(0deg);opacity:1}90%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.next-btn-wrap{position:fixed;bottom:32px;right:32px;z-index:5100;display:none;}
+.next-btn-wrap.show{display:block;}
+
+/* ========== SCROLL SITE ========== */
+#scroll-site{display:none;}
+#scroll-site.show{display:block;}
+.nav-dots{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:10px;}
+.nav-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .2s,transform .2s;}
+.nav-dot.active{background:var(--pink);transform:scale(1.4);}
+
+/* ========== GAMES SECTION ========== */
+#page-games{background:linear-gradient(180deg,#0a0018 0%,#150030 25%,#1e0045 50%,#150030 75%,#0a0018 100%);padding:50px 16px 80px;}
+.section-title{text-align:center;font-family:'Dancing Script',cursive;font-size:clamp(2rem,6vw,3.5rem);background:linear-gradient(135deg,#f9c74f,#ff85a1,#c77dff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
+.section-sub{text-align:center;color:rgba(255,255,255,.6);margin-bottom:44px;font-size:.92rem;}
+.game-zone{max-width:740px;margin:0 auto 50px;padding:32px 28px;position:relative;}
+.game-zone-title{font-family:'Playfair Display',serif;font-size:1.3rem;color:#fff;text-align:center;margin-bottom:4px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.game-zone-desc{color:rgba(255,255,255,.55);text-align:center;font-size:.85rem;margin-bottom:22px;}
+.game-badge{display:inline-block;background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:1px;margin-bottom:12px;}
+
+/* 3D GLOBAL */
+.perspective-wrap{perspective:900px;perspective-origin:center center;}
+
+/* ========== GAME 1: SCRAMBLE ========== */
+.scramble-tiles{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:20px;}
+.s-tile{
+  width:52px;height:52px;cursor:pointer;position:relative;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,2,.6,1);
+}
+.s-tile:hover{transform:rotateY(20deg) scale(1.12);}
+.s-tile.selected{transform:rotateY(180deg) scale(1.1);}
+.s-tile-front,.s-tile-back{
+  position:absolute;inset:0;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;font-weight:700;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.s-tile-front{background:rgba(255,110,180,.2);border:2px solid rgba(255,110,180,.4);color:#fff;}
+.s-tile-back{background:rgba(249,199,79,.2);border:2px solid rgba(249,199,79,.5);color:var(--gold);transform:rotateY(180deg);}
+.scramble-answer{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;min-height:52px;margin-bottom:16px;padding:10px;background:rgba(255,255,255,.04);border-radius:14px;border:1px dashed rgba(255,255,255,.15);}
+.a-slot{width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,.06);border:2px dashed rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:700;color:#fff;cursor:pointer;}
+.a-slot.filled{background:rgba(0,220,130,.12);border-color:rgba(0,220,130,.4);}
+.scramble-hint{text-align:center;color:rgba(255,255,255,.4);font-size:.8rem;margin-bottom:14px;}
+.scramble-feedback{text-align:center;min-height:32px;font-size:.95rem;font-weight:600;}
+.scramble-score{text-align:center;color:var(--gold);font-size:.9rem;margin-top:10px;}
+
+/* ========== GAME 2: DIALOGUE MATCH ========== */
+.dialogue-card-3d{
+  width:100%;max-width:480px;margin:0 auto 20px;height:160px;
+  position:relative;transform-style:preserve-3d;transition:transform .7s ease;cursor:pointer;
+}
+.dialogue-card-3d.flipped{transform:rotateY(180deg);}
+.dlg-front,.dlg-back{
+  position:absolute;inset:0;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  text-align:center;
+}
+.dlg-front{background:linear-gradient(135deg,rgba(155,89,182,.3),rgba(255,110,180,.2));border:1px solid rgba(155,89,182,.4);}
+.dlg-front p{font-family:'Playfair Display',serif;font-style:italic;color:#fff;font-size:1rem;line-height:1.6;}
+.dlg-back{background:linear-gradient(135deg,rgba(249,199,79,.2),rgba(230,168,23,.2));border:1px solid rgba(249,199,79,.4);transform:rotateY(180deg);}
+.dlg-back .reveal-hero{font-size:2.5rem;display:block;margin-bottom:8px;}
+.dlg-back .reveal-text{color:var(--gold);font-weight:700;font-size:1rem;}
+.dlg-back .reveal-movie{color:rgba(255,255,255,.7);font-size:.82rem;margin-top:4px;}
+.dlg-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.dlg-opt{padding:12px;border-radius:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;font-size:.88rem;cursor:pointer;transition:all .2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;}
+.dlg-opt:hover{background:rgba(255,110,180,.2);border-color:var(--pink);transform:scale(1.04);}
+.dlg-opt.correct-opt{background:rgba(0,220,130,.15);border-color:rgba(0,220,130,.5);}
+.dlg-opt.wrong-opt{background:rgba(255,60,60,.15);border-color:rgba(255,60,60,.4);}
+.dlg-progress{text-align:center;color:rgba(255,255,255,.4);font-size:.8rem;margin-bottom:8px;}
+.dlg-score{text-align:center;color:var(--gold);font-weight:700;font-size:.9rem;margin-top:8px;}
+.dlg-hint{text-align:center;color:rgba(255,255,255,.35);font-size:.75rem;margin-bottom:12px;}
+
+/* ========== GAME 3: EMOJI SONG PUZZLE ========== */
+.emoji-display{font-size:2.2rem;text-align:center;letter-spacing:6px;margin-bottom:18px;padding:16px;background:rgba(255,255,255,.05);border-radius:14px;border:1px solid rgba(255,255,255,.1);min-height:70px;display:flex;align-items:center;justify-content:center;gap:4px;}
+.emoji-display span{display:inline-block;animation:emojiPop .4s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes emojiPop{from{transform:scale(0) rotateZ(-20deg);opacity:0}to{transform:scale(1) rotateZ(0);opacity:1}}
+.song-options{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.song-opt{padding:14px 10px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:#fff;font-size:.85rem;cursor:pointer;transition:all .2s;text-align:center;}
+.song-opt:hover{transform:translateY(-4px) rotateX(5deg);background:rgba(155,89,182,.2);border-color:var(--purple);box-shadow:0 8px 24px rgba(155,89,182,.3);}
+.song-opt.correct-song{background:rgba(0,220,130,.15);border-color:rgba(0,220,130,.5);}
+.song-opt.wrong-song{background:rgba(255,60,60,.12);border-color:rgba(255,60,60,.4);}
+.song-feedback{text-align:center;min-height:28px;font-size:.92rem;font-weight:600;margin-bottom:8px;}
+.song-score{text-align:center;color:var(--gold);font-size:.88rem;}
+
+/* ========== GAME 4: HERO FACE-OFF (3D) ========== */
+.faceoff-arena{display:grid;grid-template-columns:1fr 60px 1fr;gap:10px;align-items:center;margin-bottom:20px;}
+.faceoff-hero{
+  padding:20px 14px;border-radius:20px;text-align:center;cursor:pointer;
+  transform-style:preserve-3d;transition:transform .3s,box-shadow .3s;
+  background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.15);
+}
+.faceoff-hero:hover{transform:scale(1.06) rotateY(-8deg);box-shadow:0 20px 40px rgba(255,110,180,.3);}
+.faceoff-hero.chosen-win{background:rgba(0,220,130,.12);border-color:rgba(0,220,130,.5);transform:scale(1.08) rotateY(-5deg);}
+.faceoff-hero.chosen-lose{background:rgba(255,60,60,.1);border-color:rgba(255,60,60,.3);}
+.faceoff-emoji{font-size:3rem;display:block;margin-bottom:8px;}
+.faceoff-name{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.faceoff-tag{font-size:.72rem;color:rgba(255,255,255,.5);}
+.faceoff-vs{font-family:'Dancing Script',cursive;font-size:2rem;color:var(--gold);text-align:center;text-shadow:0 0 20px rgba(249,199,79,.6);}
+.faceoff-q{text-align:center;font-family:'Playfair Display',serif;font-style:italic;color:#fff;font-size:1rem;margin-bottom:16px;padding:14px;background:rgba(255,255,255,.05);border-radius:12px;line-height:1.6;}
+.faceoff-reveal{text-align:center;padding:14px;border-radius:12px;margin-top:10px;display:none;font-size:.9rem;}
+.faceoff-reveal.show{display:block;}
+.faceoff-score{text-align:center;color:var(--gold);font-size:.88rem;margin-top:8px;}
+
+/* ========== GAME 5: TRUE OR FALSE 3D SWIPE ========== */
+.tof-card-wrap{perspective:800px;margin-bottom:20px;}
+.tof-card{
+  width:100%;max-width:460px;margin:0 auto;padding:28px 24px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(255,110,180,.15),rgba(155,89,182,.15));
+  border:1px solid rgba(255,255,255,.18);text-align:center;
+  transform-style:preserve-3d;transition:transform .5s ease;position:relative;
+}
+.tof-card.swipe-right{animation:swipeRight .5s ease forwards;}
+.tof-card.swipe-left{animation:swipeLeft .5s ease forwards;}
+@keyframes swipeRight{to{transform:translateX(120%) rotateZ(15deg);opacity:0}}
+@keyframes swipeLeft{to{transform:translateX(-120%) rotateZ(-15deg);opacity:0}}
+.tof-fact{font-family:'Playfair Display',serif;color:#fff;font-size:1.05rem;line-height:1.7;margin-bottom:20px;}
+.tof-source{color:rgba(255,255,255,.4);font-size:.78rem;margin-bottom:18px;}
+.tof-btns{display:flex;gap:14px;justify-content:center;}
+.tof-btn{padding:14px 36px;border:none;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.tof-true{background:linear-gradient(135deg,#00dc82,#00b368);color:#fff;box-shadow:0 0 20px rgba(0,220,130,.4);}
+.tof-false{background:linear-gradient(135deg,#ff4757,#c0392b);color:#fff;box-shadow:0 0 20px rgba(255,71,87,.4);}
+.tof-true:hover,.tof-false:hover{transform:scale(1.08);}
+.tof-result{text-align:center;padding:12px;border-radius:12px;margin-top:12px;display:none;}
+.tof-result.show{display:block;}
+.tof-progress{text-align:center;color:rgba(255,255,255,.4);font-size:.78rem;margin-bottom:10px;}
+.tof-score{text-align:center;color:var(--gold);font-size:.88rem;margin-top:6px;}
+
+/* ========== GAME 6: SPIN THE WHEEL 3D ========== */
+.wheel-container{position:relative;width:260px;margin:0 auto 24px;perspective:400px;}
+.wheel-3d{
+  width:260px;height:260px;border-radius:50%;position:relative;
+  transform-style:preserve-3d;transition:transform 3.5s cubic-bezier(.17,.67,.35,1);
+  border:6px solid var(--gold);box-shadow:0 0 40px rgba(249,199,79,.4),inset 0 0 30px rgba(0,0,0,.3);
+}
+.wheel-pointer{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:1.8rem;z-index:10;}
+.wheel-segment{position:absolute;width:50%;height:50%;top:0;right:0;transform-origin:0% 100%;}
+.spin-btn-row{text-align:center;margin-bottom:16px;}
+.spin-btn{padding:14px 40px;font-size:1rem;font-weight:700;}
+.spin-btn:disabled{opacity:.5;cursor:not-allowed;}
+.dare-card{text-align:center;padding:20px;border-radius:16px;background:rgba(249,199,79,.08);border:1px solid rgba(249,199,79,.3);margin-top:10px;display:none;}
+.dare-card.show{display:block;animation:fadeInUp .5s ease;}
+.dare-emoji{font-size:2.5rem;margin-bottom:10px;display:block;}
+.dare-text{color:#fff;font-size:1rem;font-weight:600;margin-bottom:6px;}
+.dare-sub{color:rgba(255,255,255,.55);font-size:.82rem;}
+
+/* ========== GAME 7: MOVIE TIMELINE SORT ========== */
+.timeline-instruction{text-align:center;color:rgba(255,255,255,.6);font-size:.85rem;margin-bottom:18px;}
+.timeline-movies{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
+.timeline-movie{
+  padding:14px 18px;border-radius:14px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.14);
+  color:#fff;font-size:.9rem;cursor:grab;user-select:none;
+  display:flex;align-items:center;gap:12px;
+  transform-style:preserve-3d;transition:transform .15s,box-shadow .15s,border-color .2s;
+}
+.timeline-movie:hover{transform:translateZ(8px) scale(1.02);box-shadow:0 12px 30px rgba(0,0,0,.3);border-color:rgba(255,110,180,.4);}
+.timeline-movie.dragging{opacity:.4;transform:scale(.96);}
+.timeline-movie.drag-over{border-color:var(--gold);background:rgba(249,199,79,.1);}
+.tm-rank{width:28px;height:28px;border-radius:50%;background:rgba(249,199,79,.2);border:1px solid rgba(249,199,79,.4);display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--gold);flex-shrink:0;}
+.tm-info{flex:1;}
+.tm-title{font-weight:600;font-size:.9rem;}
+.tm-year{color:rgba(255,255,255,.4);font-size:.75rem;}
+.tm-emoji{font-size:1.4rem;flex-shrink:0;}
+.timeline-check-row{text-align:center;margin-bottom:10px;}
+.timeline-result{text-align:center;padding:14px;border-radius:12px;margin-top:10px;display:none;}
+.timeline-result.show{display:block;}
+
+/* ========== GAME 8: KOLLYWOOD THIS OR THAT ========== */
+.kot-wrapper{max-width:540px;margin:0 auto;}
+.kot-q{text-align:center;font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;margin-bottom:6px;min-height:40px;}
+.kot-sub{text-align:center;color:rgba(255,255,255,.45);font-size:.78rem;margin-bottom:22px;}
+.kot-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.kot-card{
+  padding:28px 16px;border-radius:22px;text-align:center;cursor:pointer;
+  background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.13);
+  transform-style:preserve-3d;transition:all .25s;
+}
+.kot-card:hover{transform:perspective(600px) rotateX(-6deg) translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.4);}
+.kot-card.picked-a{background:rgba(255,110,180,.18);border-color:var(--pink);transform:perspective(600px) rotateX(-6deg) translateY(-8px);}
+.kot-card.picked-b{background:rgba(155,89,182,.18);border-color:var(--purple);transform:perspective(600px) rotateX(-6deg) translateY(-8px);}
+.kot-emoji{font-size:3rem;display:block;margin-bottom:10px;}
+.kot-label{font-size:.95rem;font-weight:700;color:#fff;display:block;margin-bottom:4px;}
+.kot-sublabel{font-size:.72rem;color:rgba(255,255,255,.45);}
+.kot-reaction{text-align:center;font-weight:600;color:var(--gold);min-height:28px;font-size:.92rem;margin-bottom:6px;}
+.kot-progress{text-align:center;color:rgba(255,255,255,.38);font-size:.78rem;}
+.kot-final{text-align:center;padding:28px 20px;display:none;}
+.kot-final.show{display:block;animation:fadeInUp .5s ease;}
+.kot-final h3{font-family:'Dancing Script',cursive;font-size:1.8rem;color:var(--gold);margin-bottom:10px;}
+
+/* ========== SHARED RESULTS ========== */
+.result-success{background:rgba(0,220,130,.1);border:1px solid rgba(0,220,130,.35);color:#00dc82;}
+.result-fail{background:rgba(255,71,87,.1);border:1px solid rgba(255,71,87,.35);color:#ff6b7a;}
+.result-neutral{background:rgba(249,199,79,.08);border:1px solid rgba(249,199,79,.3);color:var(--gold);}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.feedback-success{color:#00dc82;} .feedback-fail{color:#ff6b7a;} .feedback-warn{color:var(--gold);}
+.center-btn{text-align:center;margin:14px 0;}
+.mini-score{text-align:center;color:var(--gold);font-size:.85rem;margin-top:6px;font-weight:700;}
+
+/* ========== GREETING & FINAL ========== */
+#page-card{background:linear-gradient(135deg,#0f001f,#2a0050,#1a003a);padding:80px 20px;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+.greeting-card{max-width:680px;width:100%;padding:52px 48px;position:relative;border:2px solid transparent;background:linear-gradient(rgba(255,255,255,.08),rgba(255,255,255,.08)) padding-box,linear-gradient(135deg,#f9c74f,#ff85a1,#c77dff,#f9c74f) border-box;}
+.greeting-card::before{content:'';position:absolute;inset:-2px;border-radius:25px;background:linear-gradient(135deg,#f9c74f,#ff85a1,#c77dff,#f9c74f);background-size:300%;z-index:-1;animation:borderRotate 6s linear infinite;filter:blur(6px);opacity:.6;}
+@keyframes borderRotate{to{background-position:300% 0}}
+.greeting-card .dear{font-family:'Dancing Script',cursive;font-size:1.3rem;color:var(--gold);margin-bottom:20px;display:block;}
+.greeting-card p{color:rgba(255,255,255,.88);font-size:1rem;line-height:1.9;}
+.greeting-signature{font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--pink);margin-top:28px;display:block;}
+.floating-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:24px;}
+.fheart{position:absolute;font-size:1.2rem;opacity:.4;animation:floatHeart linear infinite;}
+@keyframes floatHeart{0%{transform:translateY(0) scale(1);opacity:.5}100%{transform:translateY(-300px) scale(1.5);opacity:0}}
+#page-final{background:linear-gradient(135deg,#0d0020,#25004a,#480090);min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:60px 20px;position:relative;}
+.final-gift-box{font-size:7rem;cursor:pointer;filter:drop-shadow(0 0 30px rgba(255,110,180,.8));text-align:center;animation:giftFloat 3s ease-in-out infinite;}
+@keyframes giftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.final-gift-box.shaking{animation:giftShake .6s ease;}
+@keyframes giftShake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-12px) rotate(-5deg)}40%{transform:translateX(12px) rotate(5deg)}60%{transform:translateX(-8px) rotate(-3deg)}80%{transform:translateX(8px) rotate(3deg)}}
+.final-reveal{display:none;text-align:center;animation:fadeInUp .8s ease;}
+.final-reveal h1{font-family:'Dancing Script',cursive;font-size:clamp(2.5rem,8vw,5.5rem);background:linear-gradient(135deg,#f9c74f,#ff85a1,#c77dff,#f9c74f);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:textShine 2s linear infinite;margin-bottom:20px;}
+.firework-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.firework{position:absolute;animation:fireworkBurst .8s ease-out forwards;}
+@keyframes fireworkBurst{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+.hearts-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;}
+.heart-particle{position:absolute;bottom:-30px;font-size:1.2rem;opacity:.5;animation:heartRise linear infinite;}
+@keyframes heartRise{0%{transform:translateY(0) scale(1);opacity:.5}100%{transform:translateY(-110vh) scale(.8);opacity:0}}
+#confetti-canvas{position:fixed;inset:0;pointer-events:none;z-index:9998;}
+@media(max-width:600px){
+  .login-card,.dob-card{padding:32px 18px;}
+  .game-zone{padding:24px 14px;}
+  .faceoff-arena{grid-template-columns:1fr 40px 1fr;gap:6px;}
+  .faceoff-emoji{font-size:2rem;}
+  .wheel-3d,.wheel-container{width:220px;height:220px;}
+  .greeting-card{padding:32px 20px;}
+  .kot-cards,.dlg-options,.song-options{grid-template-columns:1fr 1fr;}
+  .tof-btn{padding:12px 22px;}
+}
+</style>
+</head>
+<body>
+<canvas id="confetti-canvas"></canvas>
+<div id="transition-overlay"><span class="transition-sparkle">✨</span></div>
+
+<!-- ====== PAGE 1: LOGIN ====== -->
+<div id="page-login" class="page">
+  <canvas class="particles" id="login-particles"></canvas>
+  <div class="balloon-wrap" id="balloon-wrap"></div>
+  <div class="login-wrap">
+    <div class="glass-card login-card">
+      <span class="brand-emoji">🎂</span>
+      <h1>Birthday Surprise</h1>
+      <p>Enter to unlock a special surprise for Harsini ✨</p>
+      <div class="input-group">
+        <span class="input-icon">📧</span>
+        <input type="email" id="email-input" placeholder="Email Address" autocomplete="off"/>
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔑</span>
+        <input type="password" id="pass-input" placeholder="Password"/>
+      </div>
+      <button class="glow-btn login-btn" onclick="doLogin()">🎉 Enter The Surprise</button>
+      <div class="error-msg" id="login-error">⚠️ Wrong credentials! Try again.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== PAGE 2: DOB ====== -->
+<div id="page-dob" class="page hidden">
+  <canvas class="particles" id="dob-particles"></canvas>
+  <div class="hearts-bg" id="hearts-bg"></div>
+  <div class="dob-card glass-card">
+    <div class="icon-row">💝 🌸 💫</div>
+    <h2>Verify Your Identity</h2>
+    <p>Before entering the birthday surprise, please verify your date of birth.</p>
+    <input type="date" class="dob-input" id="dob-input" max="2023-12-31"/>
+    <button class="glow-btn dob-btn" onclick="checkDob()">🔓 Verify & Continue</button>
+    <div class="dob-error" id="dob-error">Oops! Wrong DOB ❤️ Try Again</div>
+  </div>
+</div>
+
+<!-- ====== BIRTHDAY OVERLAY ====== -->
+<div id="birthday-overlay">
+  <canvas class="particles" id="bday-particles" style="position:fixed;inset:0;z-index:0;pointer-events:none;"></canvas>
+  <div class="gift-rain" id="gift-rain"></div>
+  <h1 class="bday-title" id="bday-title">🎉 Happy Birthday Harsini 🎉</h1>
+  <p class="dev-line">Developed With Love By</p>
+  <div class="dev-names">
+    <span class="dev-name" id="dev1">❤️ Inba ❤️</span>
+    <span class="dev-name" id="dev2">❤️ Bala ❤️</span>
+    <span class="dev-name" id="dev3">❤️ Sabareesh ❤️</span>
+  </div>
+  <div class="next-btn-wrap" id="next-btn-wrap">
+    <button class="glow-btn" onclick="goToGames()">🎮 Birthday Fun Zone →</button>
+  </div>
+</div>
+
+<!-- ====== SCROLL SITE ====== -->
+<div id="scroll-site">
+<div class="nav-dots" id="nav-dots">
+  <div class="nav-dot active" onclick="scrollToSection('page-games')"></div>
+  <div class="nav-dot" onclick="scrollToSection('page-card')"></div>
+  <div class="nav-dot" onclick="scrollToSection('page-final')"></div>
+</div>
+
+<!-- ====== PAGE 3: GAMES ====== -->
+<section id="page-games" class="page">
+<canvas class="particles" id="games-particles"></canvas>
+<div style="position:relative;z-index:10;padding:60px 16px 80px;">
+
+<h2 class="section-title">🎬 Kollywood Birthday Fun Zone 🎬</h2>
+<p class="section-sub">8 Tamil-themed games — play, laugh, and celebrate! 🌟</p>
+
+<!-- ==============================
+     GAME 1: MOVIE NAME SCRAMBLE
+     ============================== -->
+<div class="glass-card game-zone" id="g1-zone">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge">GAME 1</span></div>
+  <div class="game-zone-title">🎬 Tamil Movie Name Scramble</div>
+  <p class="game-zone-desc">Rearrange the 3D tiles to spell the Tamil movie name! Tap a tile to select, tap answer slot to place.</p>
+  <div class="scramble-hint" id="g1-hint">Hint: Loading...</div>
+  <div class="perspective-wrap">
+    <div class="scramble-tiles" id="g1-tiles"></div>
+  </div>
+  <div class="scramble-answer" id="g1-answer"></div>
+  <div class="center-btn">
+    <button class="glow-btn" onclick="checkScramble()" style="padding:11px 30px;font-size:.9rem;">✅ Check Answer</button>
+    <button class="glow-btn" onclick="nextScramble()" style="padding:11px 28px;font-size:.9rem;background:linear-gradient(135deg,#27ae60,#2ecc71);margin-left:8px;">Next Movie →</button>
+  </div>
+  <div class="scramble-feedback" id="g1-feedback"></div>
+  <div class="scramble-score" id="g1-score">Score: 0 / 0</div>
+</div>
+
+<!-- ==============================
+     GAME 2: DIALOGUE MATCH
+     ============================== -->
+<div class="glass-card game-zone" id="g2-zone" style="background:rgba(155,89,182,.06);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#9b59b6,#6c3483);">GAME 2</span></div>
+  <div class="game-zone-title">🎭 Guess the Tamil Dialogue</div>
+  <p class="game-zone-desc">Flip the card, read the iconic dialogue, then pick which hero/movie it's from!</p>
+  <div class="dlg-progress" id="g2-progress">Question 1 of 8</div>
+  <div class="dlg-hint">👆 Click the card to flip and see the dialogue</div>
+  <div class="perspective-wrap">
+    <div class="dialogue-card-3d" id="g2-card" onclick="flipDlgCard()">
+      <div class="dlg-front"><p id="g2-front-text">Click to reveal dialogue...</p></div>
+      <div class="dlg-back">
+        <div>
+          <span class="reveal-hero" id="g2-hero">🦁</span>
+          <div class="reveal-text" id="g2-answer-text">Answer</div>
+          <div class="reveal-movie" id="g2-movie">Movie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dlg-options" id="g2-options"></div>
+  <div class="dlg-score" id="g2-score">Score: 0 / 0</div>
+</div>
+
+<!-- ==============================
+     GAME 3: EMOJI SONG PUZZLE
+     ============================== -->
+<div class="glass-card game-zone" id="g3-zone" style="background:rgba(249,199,79,.04);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#f9c74f,#e6a817);color:#1a0030;">GAME 3</span></div>
+  <div class="game-zone-title">🎵 Tamil Song Emoji Puzzle</div>
+  <p class="game-zone-desc">These emoji pop-tiles represent a famous Tamil song. Can you guess it? 🎶</p>
+  <div class="perspective-wrap">
+    <div class="emoji-display" id="g3-emojis"></div>
+  </div>
+  <div class="song-options" id="g3-options"></div>
+  <div class="song-feedback" id="g3-feedback"></div>
+  <div class="song-score" id="g3-score">Score: 0 / 0</div>
+  <div class="center-btn"><button class="glow-btn" onclick="nextSong()" style="padding:11px 28px;font-size:.88rem;">Next Song →</button></div>
+</div>
+
+<!-- ==============================
+     GAME 4: HERO FACE-OFF
+     ============================== -->
+<div class="glass-card game-zone" id="g4-zone" style="background:rgba(255,71,87,.04);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#ff4757,#c0392b);">GAME 4</span></div>
+  <div class="game-zone-title">🏆 Tamil Hero Face-Off</div>
+  <p class="game-zone-desc">A famous line was said in a Tamil movie — which hero's style does it match? 3D duel!</p>
+  <div class="faceoff-q" id="g4-question">Loading the battlefield...</div>
+  <div class="faceoff-arena" id="g4-arena">
+    <div class="faceoff-hero" id="g4-heroA" onclick="pickHero(0)">
+      <span class="faceoff-emoji" id="g4-emojiA">🦁</span>
+      <div class="faceoff-name" id="g4-nameA">Hero A</div>
+      <div class="faceoff-tag" id="g4-tagA">Pick this hero</div>
+    </div>
+    <div class="faceoff-vs">VS</div>
+    <div class="faceoff-hero" id="g4-heroB" onclick="pickHero(1)">
+      <span class="faceoff-emoji" id="g4-emojiB">👑</span>
+      <div class="faceoff-name" id="g4-nameB">Hero B</div>
+      <div class="faceoff-tag" id="g4-tagB">Pick this hero</div>
+    </div>
+  </div>
+  <div class="faceoff-reveal" id="g4-reveal"></div>
+  <div class="faceoff-score" id="g4-score">Score: 0 / 0</div>
+  <div class="center-btn" style="margin-top:12px;"><button class="glow-btn" onclick="nextFaceoff()" style="padding:11px 28px;font-size:.88rem;">Next Round →</button></div>
+</div>
+
+<!-- ==============================
+     GAME 5: TRUE OR FALSE
+     ============================== -->
+<div class="glass-card game-zone" id="g5-zone" style="background:rgba(0,220,130,.03);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#00dc82,#00b368);">GAME 5</span></div>
+  <div class="game-zone-title">🎪 Kollywood True or False</div>
+  <p class="game-zone-desc">Tamil cinema facts — swipe the 3D card with True or False! How much do you know?</p>
+  <div class="tof-progress" id="g5-progress">Question 1 of 8</div>
+  <div class="tof-card-wrap">
+    <div class="tof-card glass-card" id="g5-card">
+      <p class="tof-fact" id="g5-fact">Loading fact...</p>
+      <p class="tof-source" id="g5-source"></p>
+      <div class="tof-btns">
+        <button class="tof-btn tof-true" onclick="answerTof(true)">✅ True</button>
+        <button class="tof-btn tof-false" onclick="answerTof(false)">❌ False</button>
+      </div>
+    </div>
+  </div>
+  <div class="tof-result" id="g5-result"></div>
+  <div class="tof-score" id="g5-score">Score: 0 / 0</div>
+</div>
+
+<!-- ==============================
+     GAME 6: SPIN THE WHEEL
+     ============================== -->
+<div class="glass-card game-zone" id="g6-zone" style="background:rgba(255,110,180,.04);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#ff6eb4,#9b59b6);">GAME 6</span></div>
+  <div class="game-zone-title">🎯 Spin the Kollywood Dare Wheel</div>
+  <p class="game-zone-desc">Spin the 3D wheel and land on a fun Tamil movie dare or challenge! 🎡</p>
+  <div class="wheel-container">
+    <div class="wheel-pointer">🔺</div>
+    <canvas id="wheel-canvas" width="260" height="260" style="border-radius:50%;cursor:pointer;" onclick="spinWheel()"></canvas>
+  </div>
+  <div class="spin-btn-row">
+    <button class="glow-btn spin-btn" id="spin-btn" onclick="spinWheel()">🎡 Spin the Wheel!</button>
+  </div>
+  <div class="dare-card" id="g6-dare">
+    <span class="dare-emoji" id="g6-dare-emoji">🎬</span>
+    <div class="dare-text" id="g6-dare-text">Your dare will appear here!</div>
+    <div class="dare-sub" id="g6-dare-sub"></div>
+  </div>
+</div>
+
+<!-- ==============================
+     GAME 7: MOVIE TIMELINE SORT
+     ============================== -->
+<div class="glass-card game-zone" id="g7-zone" style="background:rgba(99,102,241,.04);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#6366f1,#4f46e5);">GAME 7</span></div>
+  <div class="game-zone-title">🗓️ Tamil Movie Timeline Sort</div>
+  <p class="game-zone-desc">Drag & drop these Tamil movies to arrange them from oldest to newest release! 3D blocks!</p>
+  <div class="timeline-instruction">Hold and drag to reorder ↕️</div>
+  <div class="timeline-movies" id="g7-movies"></div>
+  <div class="center-btn">
+    <button class="glow-btn" onclick="checkTimeline()" style="padding:11px 30px;font-size:.9rem;">🔍 Check Order</button>
+    <button class="glow-btn" onclick="shuffleTimeline()" style="padding:11px 28px;font-size:.88rem;background:linear-gradient(135deg,#6366f1,#4f46e5);margin-left:8px;">🔀 Shuffle</button>
+  </div>
+  <div class="timeline-result" id="g7-result"></div>
+</div>
+
+<!-- ==============================
+     GAME 8: KOLLYWOOD THIS OR THAT
+     ============================== -->
+<div class="glass-card game-zone" id="g8-zone" style="background:rgba(249,199,79,.03);">
+  <div style="text-align:center;margin-bottom:8px;"><span class="game-badge" style="background:linear-gradient(135deg,#f9c74f,#e91e8c);color:#fff;">GAME 8</span></div>
+  <div class="game-zone-title">🔮 Kollywood This or That</div>
+  <p class="game-zone-desc">Tamil cinema's biggest debates — make your pick with style! 3D perspective cards.</p>
+  <div class="kot-wrapper" id="g8-wrapper">
+    <p class="kot-q" id="g8-q">Loading Tamil debate...</p>
+    <p class="kot-sub" id="g8-sub"></p>
+    <div class="kot-cards">
+      <div class="kot-card" id="g8-a" onclick="pickKot(0)">
+        <span class="kot-emoji" id="g8-emoji-a">🦁</span>
+        <span class="kot-label" id="g8-label-a">Option A</span>
+        <span class="kot-sublabel" id="g8-sub-a"></span>
+      </div>
+      <div class="kot-card" id="g8-b" onclick="pickKot(1)">
+        <span class="kot-emoji" id="g8-emoji-b">👑</span>
+        <span class="kot-label" id="g8-label-b">Option B</span>
+        <span class="kot-sublabel" id="g8-sub-b"></span>
+      </div>
+    </div>
+    <div class="kot-reaction" id="g8-reaction"></div>
+    <div class="kot-progress" id="g8-progress">Question 1 of 10</div>
+    <div class="kot-final" id="g8-final">
+      <h3>🎉 You've survived Kollywood debates!</h3>
+      <p style="color:rgba(255,255,255,.7);margin:10px 0 16px;">That was fun! Tamil cinema is the best! 🎬</p>
+      <button class="glow-btn" onclick="restartKot()" style="padding:12px 32px;">Play Again 🔄</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end inner padding div -->
+</section>
+
+<!-- ====== PAGE 4: GREETING ====== -->
+<section id="page-card">
+  <div class="greeting-card glass-card" style="position:relative;z-index:10;">
+    <div class="floating-hearts" id="floating-hearts"></div>
+    <span class="dear">Dear Harsini,</span>
+    <p id="greeting-text"></p>
+    <span class="greeting-signature">With lots of love ❤️</span>
+  </div>
+</section>
+
+<!-- ====== FINAL ====== -->
+<section id="page-final">
+  <canvas class="particles" id="final-particles" style="position:absolute;inset:0;"></canvas>
+  <div class="firework-bg" id="firework-bg"></div>
+  <div id="pre-final" style="text-align:center;position:relative;z-index:10;">
+    <div class="final-gift-box" id="final-gift" onclick="openFinalSurprise()">🎁</div>
+    <p style="color:rgba(255,255,255,.7);margin-bottom:20px;font-size:.95rem;">Click the gift to open your final surprise!</p>
+    <button class="glow-btn" onclick="openFinalSurprise()" style="padding:16px 48px;font-size:1.1rem;font-weight:700;">🎁 Open Final Surprise</button>
+  </div>
+  <div class="final-reveal" id="final-reveal" style="position:relative;z-index:10;">
+    <h1>🎉 Happy Birthday Harsini! 🎉</h1>
+    <div class="glass-card" style="padding:28px 36px;max-width:580px;margin:0 auto;">
+      <p style="font-family:'Dancing Script',cursive;font-size:1.5rem;color:var(--gold);line-height:1.8;">
+        May your life be as beautiful as every Tamil movie's climax — unexpected, emotional, and full of joy! 🌸✨
+      </p>
+      <p style="color:rgba(255,255,255,.65);margin-top:14px;font-size:.88rem;">From Inba, Bala & Sabareesh — with all the love in the world ❤️</p>
+    </div>
+    <button class="glow-btn" onclick="restartFireworks()" style="margin-top:28px;padding:14px 36px;">🎆 More Fireworks!</button>
+  </div>
+</section>
+
+</div><!-- end scroll-site -->
+
+<script>
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function qs(s,ctx=document){return ctx.querySelector(s);}
+function qsa(s,ctx=document){return ctx.querySelectorAll(s);}
+function showEl(id){document.getElementById(id).style.display='block';}
+function hideEl(id){document.getElementById(id).style.display='none';}
+function setText(id,t){document.getElementById(id).textContent=t;}
+function rand(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+/* ============================================================
+   PARTICLE SYSTEM
+   ============================================================ */
+function initParticles(id,cfg={}){
+  const canvas=document.getElementById(id);if(!canvas)return;
+  const ctx=canvas.getContext('2d');let W,H,pts=[];
+  const c={count:cfg.count||60,colors:cfg.colors||['#ff6eb4','#c77dff','#f9c74f'],maxSize:cfg.maxSize||3.5,speed:cfg.speed||0.4,shapes:cfg.shapes||['circle']};
+  function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
+  function rp(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*c.maxSize+1,vx:(Math.random()-.5)*c.speed,vy:(Math.random()-.5)*c.speed,col:c.colors[Math.floor(Math.random()*c.colors.length)],a:Math.random()*.5+.15,sh:c.shapes[Math.floor(Math.random()*c.shapes.length)]};}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      ctx.save();ctx.globalAlpha=p.a;ctx.fillStyle=p.col;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+      ctx.restore();
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize',resize);
+  resize();pts=Array.from({length:c.count},rp);draw();
+}
+
+/* ============================================================
+   CONFETTI
+   ============================================================ */
+const CC=document.getElementById('confetti-canvas');
+const CCX=CC.getContext('2d');
+let cPieces=[];let cRunning=false;
+function resizeCC(){CC.width=window.innerWidth;CC.height=window.innerHeight;}
+resizeCC();window.addEventListener('resize',resizeCC);
+function launchConfetti(n=120){
+  const cols=['#f9c74f','#ff6eb4','#c77dff','#ff85a1','#80ffdb','#fff'];
+  for(let i=0;i<n;i++)cPieces.push({x:Math.random()*CC.width,y:-10,w:Math.random()*10+5,h:Math.random()*6+3,vx:(Math.random()-.5)*4,vy:Math.random()*4+2,rot:Math.random()*360,rv:(Math.random()-.5)*6,col:rand(cols),a:1});
+  if(!cRunning)animCC();
+}
+function animCC(){
+  cRunning=true;CCX.clearRect(0,0,CC.width,CC.height);
+  cPieces=cPieces.filter(p=>p.y<CC.height+20&&p.a>0);
+  for(const p of cPieces){CCX.save();CCX.globalAlpha=p.a;CCX.translate(p.x+p.w/2,p.y+p.h/2);CCX.rotate(p.rot*Math.PI/180);CCX.fillStyle=p.col;CCX.fillRect(-p.w/2,-p.h/2,p.w,p.h);CCX.restore();p.x+=p.vx;p.y+=p.vy;p.vy+=.08;p.rot+=p.rv;if(p.y>CC.height-100)p.a-=.02;}
+  if(cPieces.length)requestAnimationFrame(animCC);else cRunning=false;
+}
+
+/* ============================================================
+   BALLOONS & HEARTS
+   ============================================================ */
+function spawnBalloons(){
+  const wrap=document.getElementById('balloon-wrap');
+  const cols=['#ff6eb4','#c77dff','#f9c74f','#ff85a1','#80ffdb'];
+  for(let i=0;i<12;i++){
+    const b=document.createElement('div');b.className='balloon';
+    const left=Math.random()*100,sz=Math.random()*30+40,dur=Math.random()*8+8,delay=Math.random()*6,col=rand(cols);
+    b.style.cssText=`left:${left}%;width:${sz}px;animation-duration:${dur}s;animation-delay:${delay}s;`;
+    b.innerHTML=`<svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"><ellipse cx="30" cy="28" rx="22" ry="28" fill="${col}" opacity="0.85"/><path d="M30 56 Q32 66 30 78" stroke="${col}" stroke-width="1.5" fill="none"/><ellipse cx="22" cy="20" rx="6" ry="8" fill="white" opacity="0.25"/></svg>`;
+    wrap.appendChild(b);
+  }
+}
+function spawnHearts(id,n=15){
+  const cont=document.getElementById(id);if(!cont)return;
+  const em=['❤️','💕','💗','💖','🌸','✨','💫','🌹'];
+  for(let i=0;i<n;i++){const h=document.createElement('span');h.className='heart-particle';h.textContent=rand(em);h.style.cssText=`left:${Math.random()*100}%;font-size:${Math.random()*14+10}px;animation-duration:${Math.random()*6+5}s;animation-delay:${Math.random()*5}s;`;cont.appendChild(h);}
+}
+function spawnGiftRain(id='gift-rain'){
+  const cont=document.getElementById(id);if(!cont)return;
+  const gs=['🎁','🎀','🎊','🎉','🌹','✨','💫','🌸','🎈'];
+  for(let i=0;i<25;i++){const g=document.createElement('span');g.className='gift-item';g.textContent=rand(gs);g.style.cssText=`left:${Math.random()*100}%;font-size:${Math.random()*20+20}px;animation-duration:${Math.random()*4+4}s;animation-delay:${Math.random()*4}s;`;cont.appendChild(g);}
+}
+
+/* ============================================================
+   TRANSITION
+   ============================================================ */
+function showTransition(cb){
+  const ov=document.getElementById('transition-overlay');
+  ov.classList.add('active');
+  setTimeout(()=>{cb();setTimeout(()=>ov.classList.remove('active'),600);},700);
+}
+
+/* ============================================================
+   PAGE 1: LOGIN
+   ============================================================ */
+initParticles('login-particles',{count:80,colors:['#ff6eb4','#c77dff','#f9c74f','#ff85a1','#fff'],maxSize:3});
+spawnBalloons();
+function doLogin(){
+  const email=document.getElementById('email-input').value.trim().toLowerCase();
+  const pass=document.getElementById('pass-input').value.trim();
+  const err=document.getElementById('login-error');
+  if(email==='bestfriendship@gmail.com'&&pass==='Harsini'){
+    showTransition(()=>{
+      document.getElementById('page-login').classList.add('hidden');
+      document.getElementById('page-dob').classList.remove('hidden');
+      initParticles('dob-particles',{count:60,maxSize:3});
+      spawnHearts('hearts-bg',20);
+    });
+  }else{
+    err.style.display='block';err.style.animation='none';
+    void err.offsetWidth;err.style.animation='shake .4s ease';
+    setTimeout(()=>err.style.display='none',3000);
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){const p=document.getElementById('page-login');if(!p.classList.contains('hidden'))doLogin();}});
+
+/* ============================================================
+   PAGE 2: DOB
+   ============================================================ */
+function checkDob(){
+  const val=document.getElementById('dob-input').value;
+  if(!val){showDobErr();return;}
+  const[y,m,d]=val.split('-').map(Number);
+  if(d===26&&m===6&&y===2006)showBdayCelebration();
+  else showDobErr();
+}
+function showDobErr(){
+  const e=document.getElementById('dob-error');
+  e.style.display='block';e.style.animation='none';void e.offsetWidth;e.style.animation='shake .4s ease';
+  setTimeout(()=>e.style.display='none',3000);
+}
+function showBdayCelebration(){
+  showTransition(()=>{
+    document.getElementById('page-dob').classList.add('hidden');
+    const ov=document.getElementById('birthday-overlay');ov.classList.add('show');
+    initParticles('bday-particles',{count:100,colors:['#f9c74f','#ff6eb4','#c77dff','#ff85a1','#fff'],maxSize:4,shapes:['circle']});
+    spawnGiftRain();
+    [['dev1',0],['dev2',.6],['dev3',1.2]].forEach(([id,d])=>{document.getElementById(id).style.animationDelay=`${1.2+d}s`;});
+    setTimeout(()=>document.getElementById('next-btn-wrap').classList.add('show'),3500);
+    setTimeout(()=>launchConfetti(200),600);
+  });
+}
+function goToGames(){
+  showTransition(()=>{
+    document.getElementById('birthday-overlay').classList.remove('show');
+    const site=document.getElementById('scroll-site');site.classList.add('show');
+    initParticles('games-particles',{count:50,colors:['#ff6eb4','#c77dff','#f9c74f','#80ffdb'],maxSize:2.5});
+    initParticles('final-particles',{count:70,colors:['#f9c74f','#ff6eb4','#c77dff'],maxSize:3.5});
+    initAllGames();
+    buildGreetingCard();buildFloatingHearts();
+    setupNavDots();
+    window.scrollTo({top:0,behavior:'instant'});
+  });
+}
+
+/* ============================================================
+   INIT ALL GAMES
+   ============================================================ */
+function initAllGames(){
+  initScramble();initDialogue();initSongPuzzle();
+  initFaceoff();initTof();initWheel();
+  initTimeline();initKot();
+}
+
+/* ============================================================
+   GAME 1: TAMIL MOVIE NAME SCRAMBLE
+   ============================================================ */
+const scrambleData=[
+  {word:'VIKRAM',hint:'Kamal Haasan multi-starrer blockbuster (2022)'},
+  {word:'BEAST',hint:'Vijay\'s action thriller with Pooja Hegde (2022)'},
+  {word:'JAILER',hint:'Rajinikanth\'s blockbuster with Mohanlal (2023)'},
+  {word:'LEO',hint:'Thalapathy Vijay\'s action film by Lokesh (2023)'},
+  {word:'MASTER',hint:'Vijay vs Vijay Sethupathi in a college (2021)'},
+  {word:'KAITHI',hint:'Karthi fights drug lords without phone all night (2019)'},
+  {word:'96',hint:'Romantic film with Vijay Sethupathi & Trisha (2018)'},
+  {word:'VADA',hint:'Bala\'s classic Tamil drama (2009)'},
+  {word:'MERSAL',hint:'Vijay triple role hospital revenge saga (2017)'},
+];
+let g1Idx=0,g1Score=0,g1Total=0,g1Selected=null,g1Answer=[],g1Current=null;
+function initScramble(){g1Idx=0;g1Score=0;g1Total=0;loadScramble();}
+function loadScramble(){
+  const data=scrambleData[g1Idx%scrambleData.length];g1Current=data;
+  g1Answer=[];g1Selected=null;
+  document.getElementById('g1-hint').textContent='💡 Hint: '+data.hint;
+  document.getElementById('g1-feedback').textContent='';
+  const letters=shuffle([...data.word]);
+  const tilesDiv=document.getElementById('g1-tiles');tilesDiv.innerHTML='';
+  const ansDiv=document.getElementById('g1-answer');ansDiv.innerHTML='';
+  letters.forEach((ch,i)=>{
+    const t=document.createElement('div');t.className='s-tile';t.dataset.char=ch;t.dataset.idx=i;
+    t.innerHTML=`<div class="s-tile-front">${ch}</div><div class="s-tile-back">${ch}</div>`;
+    t.addEventListener('click',()=>selectTile(t,ch,i));
+    tilesDiv.appendChild(t);
+  });
+  for(let i=0;i<data.word.length;i++){
+    const sl=document.createElement('div');sl.className='a-slot';sl.dataset.pos=i;
+    sl.addEventListener('click',()=>removeFromAnswer(sl));
+    ansDiv.appendChild(sl);
+  }
+  updateScrambleScore();
+}
+function selectTile(el,ch,idx){
+  if(el.classList.contains('selected'))return;
+  const slots=document.querySelectorAll('.a-slot');
+  const empty=[...slots].find(s=>!s.classList.contains('filled'));
+  if(!empty)return;
+  el.classList.add('selected');
+  empty.textContent=ch;empty.classList.add('filled');
+  empty.dataset.tileIdx=idx;
+  g1Answer.push({char:ch,slot:empty,tile:el});
+}
+function removeFromAnswer(sl){
+  if(!sl.classList.contains('filled'))return;
+  const tileIdx=sl.dataset.tileIdx;
+  const tile=document.querySelector(`.s-tile[data-idx="${tileIdx}"]`);
+  if(tile)tile.classList.remove('selected');
+  sl.textContent='';sl.classList.remove('filled');delete sl.dataset.tileIdx;
+  g1Answer=g1Answer.filter(a=>a.slot!==sl);
+}
+function checkScramble(){
+  const slots=[...document.querySelectorAll('.a-slot')];
+  const ans=slots.map(s=>s.textContent).join('');
+  const fb=document.getElementById('g1-feedback');
+  g1Total++;
+  if(ans===g1Current.word){
+    g1Score++;fb.innerHTML='<span class="feedback-success">🎉 Correct! '+g1Current.word+'! Superb!</span>';
+    launchConfetti(60);
+  }else{
+    fb.innerHTML=`<span class="feedback-fail">❌ It was "${g1Current.word}" — Try again next time!</span>`;
+  }
+  updateScrambleScore();
+  setTimeout(()=>{g1Idx=(g1Idx+1)%scrambleData.length;loadScramble();},1800);
+}
+function nextScramble(){g1Idx=(g1Idx+1)%scrambleData.length;loadScramble();}
+function updateScrambleScore(){document.getElementById('g1-score').textContent=`⭐ Score: ${g1Score} / ${g1Total}`;}
+
+/* ============================================================
+   GAME 2: DIALOGUE MATCH (3D FLIP)
+   ============================================================ */
+const dialogueData=[
+  {dialogue:'"Naan oru dhadavai sonna, nooru dhadavai sonna maadiri!"',hero:'🦁',name:'Superstar Rajinikanth',movie:'Baasha (1995)',options:['🦁 Rajinikanth','🎭 Kamal Haasan','🦅 Vijay','👑 Ajith'],correct:0},
+  {dialogue:'"Un peru enna?" "Enna peru?" — "Nee enna peru solluriya?" "Naan yaar nu theriyuma?"',hero:'🎭',name:'Ulaganayagan Kamal',movie:'Thevar Magan (1992)',options:['🦁 Rajinikanth','🎭 Kamal Haasan','🦅 Vijay','👑 Ajith'],correct:1},
+  {dialogue:'"Neeyum naan thaan da. Oru dhadavai kiss pannuva?"',hero:'🦅',name:'Thalapathy Vijay',movie:'Kavalan (2011)',options:['🦁 Rajinikanth','🦅 Vijay','👑 Ajith','💪 Suriya'],correct:1},
+  {dialogue:'"Yean sollala, enga sollala? Idhellam theriyathu. Yennala mudiyathu!"',hero:'👑',name:'Thala Ajith',movie:'Mankatha (2011)',options:['🦁 Rajinikanth','🎭 Kamal','🦅 Vijay','👑 Ajith'],correct:3},
+  {dialogue:'"Vaa machan, life la namba irandhu dhaan irukkom. Idhuvum kadakkum!"',hero:'💪',name:'Suriya',movie:'7aum Arivu (2011)',options:['💪 Suriya','🦅 Vijay','🎭 Kamal','👑 Ajith'],correct:0},
+  {dialogue:'"Naanum oru kaalam varuven... andha naal yeppo varum theriyathu."',hero:'🌟',name:'Dhanush',movie:'3 (2012)',options:['🌟 Dhanush','🦅 Vijay','👑 Ajith','💪 Suriya'],correct:0},
+  {dialogue:'"Villain-a? Naan VILLAIN-A?! Naan hero!"',hero:'🔥',name:'Vijay Sethupathi',movie:'Vikram (2022)',options:['🔥 Vijay Sethupathi','🦁 Rajinikanth','🎭 Kamal','🦅 Vijay'],correct:0},
+  {dialogue:'"Enakku oru kuthu koracha? Kuruvi pola vara maaten!"',hero:'🦅',name:'Thalapathy Vijay',movie:'Kuruvi (2008)',options:['🦅 Vijay','🦁 Rajinikanth','💪 Suriya','🌟 Dhanush'],correct:0},
+];
+let g2Idx=0,g2Score=0,g2Total=0,g2Flipped=false,g2Answered=false;
+function initDialogue(){g2Idx=0;g2Score=0;g2Total=0;loadDialogue();}
+function loadDialogue(){
+  g2Flipped=false;g2Answered=false;
+  const data=dialogueData[g2Idx%dialogueData.length];
+  document.getElementById('g2-front-text').textContent=data.dialogue;
+  document.getElementById('g2-hero').textContent=data.hero;
+  document.getElementById('g2-answer-text').textContent=data.name;
+  document.getElementById('g2-movie').textContent=data.movie;
+  document.getElementById('g2-card').classList.remove('flipped');
+  document.getElementById('g2-progress').textContent=`Question ${g2Idx+1} of ${dialogueData.length}`;
+  const opts=document.getElementById('g2-options');opts.innerHTML='';
+  data.options.forEach((opt,i)=>{
+    const b=document.createElement('div');b.className='dlg-opt';b.textContent=opt;
+    b.addEventListener('click',()=>answerDialogue(i,data.correct,data));
+    opts.appendChild(b);
+  });
+  updateDlgScore();
+}
+function flipDlgCard(){
+  if(!g2Answered)document.getElementById('g2-card').classList.toggle('flipped');
+}
+function answerDialogue(chosen,correct,data){
+  if(g2Answered)return;g2Answered=true;g2Total++;
+  const opts=document.querySelectorAll('.dlg-opt');
+  opts[correct].classList.add('correct-opt');
+  if(chosen!==correct){opts[chosen].classList.add('wrong-opt');}else{g2Score++;launchConfetti(50);}
+  document.getElementById('g2-card').classList.add('flipped');
+  updateDlgScore();
+  setTimeout(()=>{g2Idx=(g2Idx+1)%dialogueData.length;loadDialogue();},2000);
+}
+function updateDlgScore(){document.getElementById('g2-score').textContent=`⭐ Score: ${g2Score} / ${g2Total}`;}
+
+/* ============================================================
+   GAME 3: TAMIL SONG EMOJI PUZZLE
+   ============================================================ */
+const songData=[
+  {emojis:['🌊','🎵','🌙','❤️'],answer:'Vennilave Vennilave',options:['Vennilave Vennilave','Kannazhaga','Naan Un','Uyire'],movie:'Minsaara Kanavu'},
+  {emojis:['🦋','🌸','💃','🎶'],answer:'Kannazhaga',options:['Kannazhaga','Aalaporan Tamizhan','Enna Solla','Rowdy Baby'],movie:'3'},
+  {emojis:['🐔','💃','🌶️','🔥'],answer:'Rowdy Baby',options:['Kannazhaga','Rowdy Baby','Aalaporan','Vaathi Coming'],movie:'Maari 2'},
+  {emojis:['⚡','🇮🇳','💪','🎤'],answer:'Aalaporan Tamizhan',options:['Aalaporan Tamizhan','Vaathi Coming','Naenga Romba Busy','Whistle'],movie:'Mersal'},
+  {emojis:['🌧️','💔','🎸','😢'],answer:'Veyil',options:['Veyil','Kanave Kanave','Uyire','Naan Un'],movie:'Veyil'},
+  {emojis:['🕺','👊','🏫','📚'],answer:'Vaathi Coming',options:['Vaathi Coming','Rowdy Baby','Master Piece','Aalaporan'],movie:'Master'},
+  {emojis:['🌹','👗','💍','🎊'],answer:'Enna Solla Pogirai',options:['Enna Solla Pogirai','Vennilave','Kannazhaga','Rowdy Baby'],movie:'Kandukondain'},
+  {emojis:['🦁','🐾','🔥','🌴'],answer:'Whistle Podu',options:['Whistle Podu','Vaathi Coming','Beast Mode','Leo Theme'],movie:'Leo'},
+];
+let g3Idx=0,g3Score=0,g3Total=0,g3Answered=false;
+function initSongPuzzle(){g3Idx=0;g3Score=0;g3Total=0;loadSong();}
+function loadSong(){
+  g3Answered=false;
+  const data=songData[g3Idx%songData.length];
+  const emojiDiv=document.getElementById('g3-emojis');emojiDiv.innerHTML='';
+  data.emojis.forEach((em,i)=>{
+    const s=document.createElement('span');s.textContent=em;
+    s.style.animationDelay=`${i*0.1}s`;emojiDiv.appendChild(s);
+  });
+  const opts=document.getElementById('g3-options');opts.innerHTML='';
+  shuffle([...data.options]).forEach(opt=>{
+    const b=document.createElement('div');b.className='song-opt';b.textContent=opt;
+    b.addEventListener('click',()=>answerSong(opt,data));opts.appendChild(b);
+  });
+  document.getElementById('g3-feedback').textContent='';
+  updateSongScore();
+}
+function answerSong(chosen,data){
+  if(g3Answered)return;g3Answered=true;g3Total++;
+  const fb=document.getElementById('g3-feedback');
+  const opts=document.querySelectorAll('.song-opt');
+  opts.forEach(o=>{if(o.textContent===data.answer)o.classList.add('correct-song');else if(o.textContent===chosen)o.classList.add('wrong-song');});
+  if(chosen===data.answer){g3Score++;fb.innerHTML=`<span class="feedback-success">🎵 Yes! "${data.answer}" from ${data.movie}!</span>`;launchConfetti(50);}
+  else{fb.innerHTML=`<span class="feedback-fail">❌ It was "${data.answer}" from ${data.movie}!</span>`;}
+  updateSongScore();
+}
+function nextSong(){g3Idx=(g3Idx+1)%songData.length;loadSong();}
+function updateSongScore(){document.getElementById('g3-score').textContent=`⭐ Score: ${g3Score} / ${g3Total}`;}
+
+/* ============================================================
+   GAME 4: HERO FACE-OFF (3D)
+   ============================================================ */
+const faceoffData=[
+  {q:'"Style-a vechu naala vaazhara naan, enna style illa nu solra?"',heroA:{emoji:'🦁',name:'Rajinikanth',tag:'Superstar'},heroB:{emoji:'🎭',name:'Kamal Haasan',tag:'Ulaganayagan'},correct:0,explain:'Rajini\'s iconic style attitude from Padayappa!'},
+  {q:'"Vera level performance ku thaan naan irukken!"',heroA:{emoji:'👑',name:'Ajith Kumar',tag:'Thala'},heroB:{emoji:'🦅',name:'Vijay',tag:'Thalapathy'},correct:0,explain:'Ajith\'s calm dialogue from Mankatha!'},
+  {q:'"Dance floor-la naan varum pothu, maapillai-kku dance varuma?"',heroA:{emoji:'🦅',name:'Vijay',tag:'Thalapathy'},heroB:{emoji:'🌟',name:'Dhanush',tag:'Kolaveri Hero'},correct:0,explain:'Vijay is the undisputed dance king of Kollywood!'},
+  {q:'"Ivan enakku brother, vendha aalu illa!"',heroA:{emoji:'💪',name:'Suriya',tag:'Singam'},heroB:{emoji:'🦅',name:'Vijay',tag:'Thalapathy'},correct:0,explain:'Suriya\'s emotional family dialogue from Singam!'},
+  {q:'"Oru kozhi muttai thinna iruka villai, idha story pannuviya?"',heroA:{emoji:'🔥',name:'Vijay Sethupathi',tag:'Makkal Selvan'},heroB:{emoji:'🌟',name:'Dhanush',tag:'Rowdy'},correct:0,explain:'Vijay Sethupathi\'s quirky comedy style!'},
+  {q:'"Namma oorla mazhai petra neenga oda pogala, naan oda poven!"',heroA:{emoji:'💙',name:'Sivakarthikeyan',tag:'SK'},heroB:{emoji:'👑',name:'Ajith',tag:'Thala'},correct:0,explain:'Sivakarthikeyan\'s romantic hero style!'},
+];
+let g4Idx=0,g4Score=0,g4Total=0,g4Active=false;
+function initFaceoff(){g4Idx=0;g4Score=0;g4Total=0;loadFaceoff();}
+function loadFaceoff(){
+  g4Active=true;
+  const d=faceoffData[g4Idx%faceoffData.length];
+  setText('g4-question',d.q);
+  setText('g4-emojiA',d.heroA.emoji);setText('g4-nameA',d.heroA.name);setText('g4-tagA',d.heroA.tag);
+  setText('g4-emojiB',d.heroB.emoji);setText('g4-nameB',d.heroB.name);setText('g4-tagB',d.heroB.tag);
+  document.getElementById('g4-heroA').className='faceoff-hero';
+  document.getElementById('g4-heroB').className='faceoff-hero';
+  const rv=document.getElementById('g4-reveal');rv.style.display='none';rv.className='faceoff-reveal';
+  updateFaceoffScore();
+}
+function pickHero(idx){
+  if(!g4Active)return;g4Active=false;g4Total++;
+  const d=faceoffData[g4Idx%faceoffData.length];
+  const rv=document.getElementById('g4-reveal');rv.style.display='block';rv.classList.add('show');
+  if(idx===d.correct){
+    g4Score++;
+    document.getElementById('g4-heroA').className='faceoff-hero'+(idx===0?' chosen-win':'');
+    document.getElementById('g4-heroB').className='faceoff-hero'+(idx===1?' chosen-win':'');
+    rv.className='faceoff-reveal show result-success';
+    rv.textContent='✅ Correct! '+d.explain;
+    launchConfetti(50);
+  }else{
+    document.getElementById('g4-heroA').className='faceoff-hero'+(idx===0?' chosen-lose':' chosen-win');
+    document.getElementById('g4-heroB').className='faceoff-hero'+(idx===1?' chosen-lose':' chosen-win');
+    rv.className='faceoff-reveal show result-fail';
+    rv.textContent='❌ Oops! '+d.explain;
+  }
+  updateFaceoffScore();
+}
+function nextFaceoff(){g4Idx=(g4Idx+1)%faceoffData.length;loadFaceoff();}
+function updateFaceoffScore(){document.getElementById('g4-score').textContent=`⭐ Score: ${g4Score} / ${g4Total}`;}
+
+/* ============================================================
+   GAME 5: TRUE OR FALSE (3D SWIPE)
+   ============================================================ */
+const tofData=[
+  {fact:'Rajinikanth\'s real name is Shivaji Rao Gaekwad and he was a bus conductor before becoming an actor.',src:'Superstar Facts',ans:true,explain:'True! He worked as a bus conductor in Bangalore before joining acting classes.'},
+  {fact:'The Tamil movie "Baahubali" was fully produced by a Tamil studio.',src:'Kollywood Trivia',ans:false,explain:'False! Baahubali is a Telugu film by S.S. Rajamouli, made in Telugu & Tamil.'},
+  {fact:'Vijay\'s father is producer-director S.A. Chandrasekhar.',src:'Thalapathy Facts',ans:true,explain:'True! Vijay is the son of legendary director S.A. Chandrasekhar.'},
+  {fact:'The song "Kolaveri Di" by Dhanush became the first Indian song to go viral on YouTube.',src:'Tamil Music History',ans:true,explain:'True! It was the first Indian song to cross 100M YouTube views!'},
+  {fact:'A.R. Rahman\'s original name is Dilip Kumar.',src:'Music Maestro Facts',ans:false,explain:'False! His original name is A.S. Dileep Kumar. He converted and took the name Allah Rakha Rahman.'},
+  {fact:'Tamil movie "96" was directed by C. Prem Kumar and featured no villain throughout the film.',src:'96 Movie Trivia',ans:true,explain:'True! 96 is a pure romance with no antagonist — pure love story!'},
+  {fact:'Kamal Haasan played all 10 characters in "Dasavathaaram" including a female role.',src:'Kamal Facts',ans:true,explain:'True! He played 10 characters, including a woman named Andal.'},
+  {fact:'Lokesh Kanagaraj directed both Master and Vikram.',src:'Director Facts',ans:true,explain:'True! Lokesh directed both and they share the same universe!'},
+];
+let g5Idx=0,g5Score=0,g5Total=0,g5Active=true;
+function initTof(){g5Idx=0;g5Score=0;g5Total=0;g5Active=true;loadTof();}
+function loadTof(){
+  g5Active=true;
+  const d=tofData[g5Idx%tofData.length];
+  const card=document.getElementById('g5-card');
+  card.className='tof-card glass-card';
+  setText('g5-fact',d.fact);setText('g5-source','📌 '+d.src);
+  setText('g5-progress',`Question ${g5Idx+1} of ${tofData.length}`);
+  const rv=document.getElementById('g5-result');rv.className='tof-result';rv.textContent='';
+  updateTofScore();
+}
+function answerTof(userAns){
+  if(!g5Active)return;g5Active=false;g5Total++;
+  const d=tofData[g5Idx%tofData.length];
+  const card=document.getElementById('g5-card');
+  const rv=document.getElementById('g5-result');
+  if(userAns===d.ans){
+    g5Score++;
+    card.classList.add('swipe-right');
+    rv.className='tof-result show result-success';rv.textContent='✅ Correct! '+d.explain;
+    launchConfetti(40);
+  }else{
+    card.classList.add('swipe-left');
+    rv.className='tof-result show result-fail';rv.textContent='❌ '+d.explain;
+  }
+  updateTofScore();
+  setTimeout(()=>{g5Idx=(g5Idx+1)%tofData.length;loadTof();},2200);
+}
+function updateTofScore(){document.getElementById('g5-score').textContent=`⭐ Score: ${g5Score} / ${g5Total}`;}
+
+/* ============================================================
+   GAME 6: SPIN THE WHEEL (Canvas)
+   ============================================================ */
+const wheelDares=[
+  {label:'🎬 Dialogue',emoji:'🎭',text:'Act out a famous Rajinikanth dialogue with full style!',sub:'Channel your inner Superstar! 🦁'},
+  {label:'🎵 Sing!',emoji:'🎤',text:'Sing the first verse of "Kolaveri Di"!',sub:'You know the words! Don\'t deny it 😄'},
+  {label:'💃 Dance!',emoji:'🕺',text:'Do Vijay\'s signature step from "Vaathi Coming"!',sub:'3..2..1.. VAATHI COMING! 🔥'},
+  {label:'🎯 Name 5',emoji:'📝',text:'Name 5 Tamil movies released in 2023!',sub:'Kollywood knowledge test time ⏱️'},
+  {label:'😂 Dare!',emoji:'😆',text:'Text your friend "Vera level" and screenshot their reply!',sub:'Classic Tamil dare 😂'},
+  {label:'🌟 Facts',emoji:'🧠',text:'Tell one fun fact about Kamal Haasan!',sub:'The legend of Tamil cinema 🎭'},
+  {label:'🎨 Draw!',emoji:'✏️',text:'Draw the Kollywood film reel logo from memory!',sub:'Art time! No peeking 🎨'},
+  {label:'🔥 Roast!',emoji:'😏',text:'Do a friendly roast of your favorite Tamil hero\'s hairstyle!',sub:'All in good fun! 💇'},
+];
+let wheelSpinning=false,wheelAngle=0;
+function initWheel(){drawWheel(0);}
+function drawWheel(angle){
+  const canvas=document.getElementById('wheel-canvas');
+  const ctx=canvas.getContext('2d');
+  const cx=130,cy=130,r=122;
+  const n=wheelDares.length;const arc=2*Math.PI/n;
+  const cols=['#ff6eb4','#9b59b6','#f9c74f','#e91e8c','#00dc82','#6366f1','#ff4757','#1abc9c'];
+  ctx.clearRect(0,0,260,260);
+  for(let i=0;i<n;i++){
+    const start=angle+i*arc,end=angle+(i+1)*arc;
+    ctx.save();ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,start,end);
+    ctx.fillStyle=cols[i%cols.length];ctx.fill();ctx.strokeStyle='rgba(255,255,255,.3)';ctx.lineWidth=2;ctx.stroke();
+    ctx.restore();
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(start+arc/2);ctx.textAlign='right';
+    ctx.font='bold 11px Poppins';ctx.fillStyle='#fff';ctx.shadowColor='rgba(0,0,0,.5)';ctx.shadowBlur=4;
+    ctx.fillText(wheelDares[i].label,r-8,4);
+    ctx.restore();
+  }
+  ctx.beginPath();ctx.arc(cx,cy,16,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();
+  ctx.beginPath();ctx.arc(cx,cy,10,0,Math.PI*2);ctx.fillStyle='#1a0030';ctx.fill();
+}
+function spinWheel(){
+  if(wheelSpinning)return;wheelSpinning=true;
+  document.getElementById('spin-btn').disabled=true;
+  document.getElementById('g6-dare').classList.remove('show');
+  const extraSpins=Math.floor(Math.random()*5+5)*2*Math.PI;
+  const stopAngle=Math.random()*2*Math.PI;
+  const totalRot=extraSpins+stopAngle;
+  const duration=3500,start=performance.now();
+  const startAngle=wheelAngle;
+  function frame(now){
+    const elapsed=now-start,progress=Math.min(elapsed/duration,1);
+    const ease=1-Math.pow(1-progress,4);
+    wheelAngle=startAngle+totalRot*ease;
+    drawWheel(wheelAngle);
+    if(progress<1){requestAnimationFrame(frame);}
+    else{
+      wheelAngle=wheelAngle%(2*Math.PI);
+      wheelSpinning=false;
+      document.getElementById('spin-btn').disabled=false;
+      showDare(wheelAngle);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+function showDare(angle){
+  const n=wheelDares.length;const arc=2*Math.PI/n;
+  const normalised=(2*Math.PI-angle%(2*Math.PI)+Math.PI/2)%(2*Math.PI);
+  const idx=Math.floor(normalised/arc)%n;
+  const d=wheelDares[idx];
+  const dc=document.getElementById('g6-dare');
+  dc.classList.add('show');
+  setText('g6-dare-emoji',d.emoji);
+  setText('g6-dare-text',d.text);
+  setText('g6-dare-sub',d.sub);
+  launchConfetti(60);
+}
+
+/* ============================================================
+   GAME 7: TAMIL MOVIE TIMELINE SORT
+   ============================================================ */
+const timelineMovies=[
+  {title:'Baasha',year:1995,emoji:'🦁'},
+  {title:'Kandukondain Kandukondain',year:2000,emoji:'🌹'},
+  {title:'Ghajini',year:2005,emoji:'💪'},
+  {title:'Vinnaithaandi Varuvaayaa',year:2010,emoji:'💙'},
+  {title:'Kaththi',year:2014,emoji:'🦅'},
+  {title:'Kaithi',year:2019,emoji:'🔧'},
+  {title:'Master',year:2021,emoji:'🎯'},
+  {title:'Leo',year:2023,emoji:'🔥'},
+];
+let g7Order=[],g7DragSrc=null;
+function initTimeline(){g7Order=shuffle([...timelineMovies]);renderTimeline();}
+function renderTimeline(){
+  const cont=document.getElementById('g7-movies');cont.innerHTML='';
+  g7Order.forEach((m,i)=>{
+    const el=document.createElement('div');el.className='timeline-movie';el.dataset.idx=i;
+    el.innerHTML=`<div class="tm-rank">${i+1}</div><div class="tm-info"><div class="tm-title">${m.title}</div><div class="tm-year">Year: ???</div></div><span class="tm-emoji">${m.emoji}</span>`;
+    el.draggable=true;
+    el.addEventListener('dragstart',()=>{g7DragSrc=i;el.classList.add('dragging');});
+    el.addEventListener('dragend',()=>{el.classList.remove('dragging');document.querySelectorAll('.timeline-movie').forEach(e=>e.classList.remove('drag-over'));});
+    el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('drag-over');});
+    el.addEventListener('dragleave',()=>el.classList.remove('drag-over'));
+    el.addEventListener('drop',e=>{e.preventDefault();if(g7DragSrc===null)return;const tmp=g7Order[g7DragSrc];g7Order[g7DragSrc]=g7Order[i];g7Order[i]=tmp;g7DragSrc=null;renderTimeline();});
+    cont.appendChild(el);
+  });
+}
+function shuffleTimeline(){g7Order=shuffle([...timelineMovies]);renderTimeline();document.getElementById('g7-result').className='timeline-result';document.getElementById('g7-result').textContent='';}
+function checkTimeline(){
+  const sorted=timelineMovies.slice().sort((a,b)=>a.year-b.year);
+  let correct=0;
+  g7Order.forEach((m,i)=>{if(m.title===sorted[i].title)correct++;});
+  const rv=document.getElementById('g7-result');rv.classList.add('show');
+  if(correct===timelineMovies.length){
+    rv.className='timeline-result show result-success';
+    rv.innerHTML='🏆 Perfect! You know your Tamil movie history!<br>'+sorted.map(m=>`${m.emoji} ${m.title} (${m.year})`).join(' → ');
+    launchConfetti(100);
+  }else{
+    rv.className='timeline-result show result-fail';
+    rv.innerHTML=`⭐ ${correct}/${timelineMovies.length} correct!<br>Correct order: `+sorted.map(m=>`${m.emoji} ${m.title} (${m.year})`).join(' → ');
+  }
+}
+
+/* ============================================================
+   GAME 8: KOLLYWOOD THIS OR THAT
+   ============================================================ */
+const kotData=[
+  {q:'The GOAT of Tamil Cinema?',sub:'Choose your all-time legend 👑',
+   a:{emoji:'🦁',label:'Rajinikanth',sub:'Superstar'},b:{emoji:'🎭',label:'Kamal Haasan',sub:'Ulaganayagan'},
+   reactA:'Thalaivar fans unite! Style unmatched! 🦁',reactB:'Kamal Haasan — the actor\'s actor! 🎭'},
+  {q:'Thalapathy or Thala?',sub:'The eternal Kollywood debate! ⚡',
+   a:{emoji:'🦅',label:'Vijay',sub:'Thalapathy'},b:{emoji:'👑',label:'Ajith Kumar',sub:'Thala'},
+   reactA:'Thalapathy Vijay — Dance king! 🦅',reactB:'Thala Ajith — Style unmatched! 👑'},
+  {q:'Biggest mass song of the decade?',sub:'Both are fire — pick one! 🔥',
+   a:{emoji:'💃',label:'Vaathi Coming',sub:'Master (2021)'},b:{emoji:'🕺',label:'Rowdy Baby',sub:'Maari 2 (2018)'},
+   reactA:'VAATHI COMING! Classroom never felt cooler! 💥',reactB:'Rowdy Baby went GLOBAL! Dhanush legend! 🌍'},
+  {q:'Best Tamil suspense thriller?',sub:'Pure edge-of-seat cinema 🎬',
+   a:{emoji:'⚡',label:'Kaithi',sub:'Karthi (2019)'},b:{emoji:'🔮',label:'Vikram Vedha',sub:'Vijay Sethupathi (2017)'},
+   reactA:'Kaithi — no songs, no romance, just TENSION! 😤',reactB:'Vikram Vedha — story master class! 🧠'},
+  {q:'Greatest Tamil music composer?',sub:'Battle of the maestros 🎵',
+   a:{emoji:'🎼',label:'A.R. Rahman',sub:'Oscar Winner'},b:{emoji:'🎸',label:'Ilaiyaraaja',sub:'Isai Puyal'},
+   reactA:'Rahman — Globally recognized genius! 🌏',reactB:'Ilaiyaraaja — the soul of Tamil music! 💙'},
+  {q:'Favorite Tamil movie genre?',sub:'What gets your heart pumping? ❤️',
+   a:{emoji:'💥',label:'Action Masala',sub:'Full paisa vasool!'},b:{emoji:'💕',label:'Pure Romance',sub:'Feel the love!'},
+   reactA:'MASS MASS MASS! Whistles and claps! 🎉',reactB:'Romance Tamil style is unbeatable 💕'},
+  {q:'Best Tamil movie climax?',sub:'Which ending hit different? 🌟',
+   a:{emoji:'🤯',label:'96\'s Ending',sub:'Pure emotional'},b:{emoji:'💪',label:'Baasha\'s Climax',sub:'Mass action'},
+   reactA:'96 ending made everyone cry quietly 😭',reactB:'BAASHA THEVIDIYA! Goosebumps forever! 🦁'},
+  {q:'Dream Tamil movie collab?',sub:'Which crossover do you want? ⭐',
+   a:{emoji:'🦁👑',label:'Rajini + Ajith',sub:'Two legends one screen'},b:{emoji:'🦅💙',label:'Vijay + Suriya',sub:'Young heroes unite'},
+   reactA:'The old school clash nobody asked for but EVERYONE wants! 🔥',reactB:'Vijay + Suriya = Box office record forever! 💥'},
+  {q:'Kollywood vs Bollywood?',sub:'Which film industry is your priority? 🎬',
+   a:{emoji:'🎭',label:'Kollywood',sub:'Tamil pride!'},b:{emoji:'🎪',label:'Bollywood',sub:'Hindi cinema'},
+   reactA:'KOLLYWOOD ALL THE WAY! Tamil movies hit different! 🌟',reactB:'Bollywood has its charm too 😄'},
+  {q:'Next Tamil blockbuster you\'re waiting for?',sub:'Hype is REAL 🚀',
+   a:{emoji:'🦅',label:'Next Vijay Film',sub:'Thalapathy 69?'},b:{emoji:'🦁',label:'Rajini\'s Next',sub:'Superstar comeback!'},
+   reactA:'Thalapathy\'s next = Whistles ready! 🦅',reactB:'Superstar never retires! 🦁'},
+];
+let g8Idx=0,g8Answered=false;
+function initKot(){g8Idx=0;loadKot();}
+function loadKot(){
+  g8Answered=false;
+  if(g8Idx>=kotData.length){document.getElementById('g8-final').classList.add('show');return;}
+  const d=kotData[g8Idx];
+  setText('g8-q',d.q);setText('g8-sub',d.sub);
+  setText('g8-emoji-a',d.a.emoji);setText('g8-label-a',d.a.label);setText('g8-sub-a',d.a.sub);
+  setText('g8-emoji-b',d.b.emoji);setText('g8-label-b',d.b.label);setText('g8-sub-b',d.b.sub);
+  setText('g8-reaction','');
+  setText('g8-progress',`Question ${g8Idx+1} of ${kotData.length}`);
+  document.getElementById('g8-a').className='kot-card';
+  document.getElementById('g8-b').className='kot-card';
+  document.getElementById('g8-final').classList.remove('show');
+}
+function pickKot(choice){
+  if(g8Answered)return;g8Answered=true;
+  const d=kotData[g8Idx];
+  document.getElementById('g8-a').className='kot-card'+(choice===0?' picked-a':'');
+  document.getElementById('g8-b').className='kot-card'+(choice===1?' picked-b':'');
+  setText('g8-reaction',choice===0?d.reactA:d.reactB);
+  setTimeout(()=>{g8Idx++;loadKot();},1600);
+}
+function restartKot(){g8Idx=0;document.getElementById('g8-final').classList.remove('show');loadKot();}
+
+/* ============================================================
+   GREETING CARD
+   ============================================================ */
+function buildGreetingCard(){
+  const text=`May your birthday be filled with happiness, laughter, success, friendship, and unforgettable memories.\n\nThank you for being such a wonderful person in our lives. Your smile lights up every room and your kindness touches every heart.\n\nJust like a beautiful Tamil movie — may your life be filled with emotions, music, drama, and a perfect happy ending!\n\nWishing you endless happiness, beautiful moments, and all the success you deserve throughout your life.\n\n🌸 Happy Birthday Once Again ❤️ 🌸`;
+  const el=document.getElementById('greeting-text');el.innerHTML='';
+  const lines=text.split('\n');
+  const chars=[];
+  lines.forEach((line,li)=>{if(li>0)chars.push({type:'br'});if(!line){chars.push({type:'br'});return;}[...line].forEach(ch=>chars.push({type:'char',ch}));});
+  let i=0;function typeNext(){if(i>=chars.length)return;const item=chars[i++];if(item.type==='br'){el.appendChild(document.createElement('br'));}else{const s=document.createElement('span');s.textContent=item.ch;s.style.cssText='opacity:0;transition:opacity .08s;';el.appendChild(s);requestAnimationFrame(()=>s.style.opacity='1');}setTimeout(typeNext,18);}
+  const obs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){typeNext();obs.disconnect();}},{threshold:0.3});
+  obs.observe(el.closest('#page-card'));
+}
+function buildFloatingHearts(){
+  const cont=document.getElementById('floating-hearts');
+  const em=['❤️','💕','🌸','✨','💫'];
+  for(let i=0;i<12;i++){const h=document.createElement('span');h.className='fheart';h.textContent=rand(em);h.style.cssText=`left:${Math.random()*90}%;bottom:${Math.random()*30}%;font-size:${Math.random()*10+8}px;animation-duration:${Math.random()*4+4}s;animation-delay:${Math.random()*4}s;`;cont.appendChild(h);}
+}
+
+/* ============================================================
+   FINAL SURPRISE
+   ============================================================ */
+function openFinalSurprise(){
+  const gift=document.getElementById('final-gift');gift.classList.add('shaking');
+  setTimeout(()=>{gift.classList.remove('shaking');gift.textContent='🎊';
+    setTimeout(()=>{
+      document.getElementById('pre-final').style.display='none';
+      document.getElementById('final-reveal').style.display='block';
+      launchConfetti(300);spawnFireworks();spawnFinalRain();
+    },600);
+  },700);
+}
+function spawnFireworks(){
+  const cont=document.getElementById('firework-bg');
+  const em=['🎆','🎇','✨','💥','🌟','⭐'];
+  for(let i=0;i<30;i++){setTimeout(()=>{const f=document.createElement('div');f.className='firework';f.textContent=rand(em);f.style.cssText=`left:${Math.random()*90}%;top:${Math.random()*80}%;font-size:${Math.random()*24+16}px;position:absolute;`;cont.appendChild(f);setTimeout(()=>f.remove(),900);},i*200);}
+}
+function spawnFinalRain(){
+  const cont=document.getElementById('firework-bg');
+  const items=['🎈','🌹','💐','🎁','🎀','💫','⭐','❤️','🌸','🎉'];
+  for(let i=0;i<25;i++){const g=document.createElement('span');g.className='gift-item';g.textContent=rand(items);g.style.cssText=`left:${Math.random()*100}%;font-size:${Math.random()*20+18}px;animation-duration:${Math.random()*4+4}s;animation-delay:${Math.random()*3}s;z-index:5;`;cont.appendChild(g);}
+}
+function restartFireworks(){launchConfetti(250);spawnFireworks();}
+
+/* ============================================================
+   NAV DOTS & SCROLL
+   ============================================================ */
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function setupNavDots(){
+  const sections=['page-games','page-card','page-final'];
+  const dots=document.querySelectorAll('.nav-dot');
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=sections.indexOf(e.target.id);if(idx>=0)dots.forEach((d,i)=>d.classList.toggle('active',i===idx));}});},{threshold:0.4});
+  sections.forEach(id=>{const el=document.getElementById(id);if(el)obs.observe(el);});
+}
+
+/* ============================================================
+   DEV NAME ANIMATIONS
+   ============================================================ */
+[['dev1',0],['dev2',.6],['dev3',1.2]].forEach(([id,d])=>{document.getElementById(id).style.animationDelay=`${1.2+d}s`;});
+</script>
+</body>
+</html>
